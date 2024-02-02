@@ -1,0 +1,7 @@
+ALGORITHMS
+tutorial: https://www.geeksforgeeks.org/complete-guide-to-dsa-for-beginners/?ref=dsa_lp
+
+___________________________________________________________
+- ¿Qué es un Algoritmo?
+Un algoritmo es un conjunto de instrucciones o pasos bien definidos que se utilizan para realizar un conjunto de tareas. En términos generales, un algoritmo es una secuencia de instrucciones para resolver un problema.z
+___________________________________________________________
