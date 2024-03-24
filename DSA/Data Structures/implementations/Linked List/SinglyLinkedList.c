@@ -146,9 +146,9 @@ int main(){
 
   printf("List length: %d\n", list_length(head)); // List length: 5
 
-  empty_list(&head); // NULL
+  empty_list(&head);
 
-  display_list(head);
+  display_list(head); // NULL
 
   free_list(head);
 
