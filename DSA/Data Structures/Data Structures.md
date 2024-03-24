@@ -2,7 +2,7 @@
 
 tutorial: https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/?ref=lbp
 ___
-### ¿Qué es una Estructura de Datos?
+## ¿Qué es una Estructura de Datos?
 Una estructura de datos se define como una forma particular de almacenar y organizar datos en nuestros dispositivos para utilizar los datos de manera eficiente y efectiva. La idea principal detrás del uso de estructuras de datos es minimizar las complejidades de tiempo y espacio. Una estructura de datos eficiente ocupa un espacio mínimo en la memoria y requiere un tiempo mínimo para ejecutar los datos.
 
 ![Data Structures clasification](./images/dsa-clasification.jpg)
@@ -10,10 +10,11 @@ Una estructura de datos se define como una forma particular de almacenar y organ
 ### Clasificaciones de las Estructuras de Datos:
 1. **ESTRUCTURA DE DATOS LINEAL:**
     - Una estructura de datos en la que los elementos de datos se organizan secuencial o linealmente, donde cada elemento se adjunta a sus elementos adyacentes anteriores y siguientes, se denomina estructura de datos lineal. Algunos ejemplos son la _Arrays (Arreglos), Matrices, Listas Enlazadas, Colas (Queues), Pilas (Stacks), Vectores Dinámicos, Colas de Prioridad, Listas Circulares_.
-
-        - ESTRUCTURA DE DATOS ESTÁTICA: La estructura de datos estática tiene un tamaño de memoria fijo. Es más fácil acceder a los elementos de una estructura de datos estática. Un ejemplo de esta estructura de datos es una _Arrays (Arreglos), Matrices_.
-
-        - ESTRUCTURA DINÁMICA DE DATOS: En la estructura de datos dinámicos, el tamaño no es fijo. Se puede actualizar aleatoriamente durante el tiempo de ejecución, lo que puede considerarse eficiente en cuanto a la complejidad de la memoria (espacio) del código. Ejemplos de esta estructura de datos son la _Listas Enlazadas, Colas (Queues), Pilas (Stacks), Vectores Dinámicos, Colas de Prioridad, Listas Circulares_.
+<br />
+        - **ESTRUCTURA DE DATOS ESTÁTICA:** La estructura de datos estática tiene un tamaño de memoria fijo. Es más fácil acceder a los elementos de una estructura de datos estática. Un ejemplo de esta estructura de datos es una _Arrays (Arreglos), Matrices_.
+<br />
+        - **ESTRUCTURA DE DATOS DINÁMICA:** En la estructura de datos dinámicos, el tamaño no es fijo. Se puede actualizar aleatoriamente durante el tiempo de ejecución, lo que puede considerarse eficiente en cuanto a la complejidad de la memoria (espacio) del código. Ejemplos de esta estructura de datos son la _Listas Enlazadas, Colas (Queues), Pilas (Stacks), Vectores Dinámicos, Colas de Prioridad, Listas Circulares_.
+<br />
 
 
 2. **ESTRUCTURA DE DATOS NO LINEAL:**
@@ -26,12 +27,16 @@ ___
 La estructura de datos más básica pero importante es el **Array**. Es una estructura de datos lineal. Un Array es una colección de tipos de datos homogéneos en la que a los elementos se les asigna memoria contigua. Debido a la asignación contigua de memoria, se puede acceder a cualquier elemento de un array en tiempo constante. Cada elemento del array tiene un número de índice correspondiente.
 
 ### Notación de Array:
-array = [1, 2, 3, 4, 5] -> elementos
- 0, 1, 2, 3, 4 -> indices
+```js
+[1, 2, 3, 4, 5] -> elementos
+ 0, 1, 2, 3, 4  -> índices
 Longitud: 5
 
+accediendo a elementos:
 array[0] -> 1
 array[1] -> 2
+```
+
 
 ### Diferentes tipos de Arrays:
 1. **Array unidimensional (1D):** Puede imaginar un array de 1D como una fila, donde los elementos se almacenan uno tras otro.
@@ -74,15 +79,18 @@ La lista enlazada es una estructura de datos lineal, en la que los elementos no 
 - **Cola (Tail):** En el caso de las listas doblemente enlazadas, a menudo también hay una referencia al último nodo de la lista, llamada cola.
 - **Nodo final (NULL):** El último nodo de una lista enlazada simple tiene un puntero que apunta a null, indicando que es el final de la lista.
 <br />
-### Tipos de Listas Enlazadas:
-    1. Single-linked list
-    2. Double-linked list
-    3. Circular Linked List
-    4. Circular Doubly Linked List
 
+### Tipos de Listas Enlazadas:
+1. Single-linked list
+2. Double-linked list
+3. Circular Linked List
+4. Circular Doubly Linked List
+
+<br />
 
 ### Single-linked list
 En este tipo, cada nodo tiene un puntero que apunta al siguiente nodo en la lista. La lista termina en un nodo cuyo puntero es nulo, indicando que no hay más nodos. Recorrer una lista enlazada individualmente se realiza hacia adelante.
+
 - Un nodo en una lista enlazada simple contiene los siguientes elementos:
     * **Datos:** Esta parte del nodo almacena el valor que se quiere guardar en la lista.
     * **Puntero a siguiente nodo:** Esta es la otra parte esencial de un nodo. El puntero es una referencia que "apunta" al siguiente nodo en la lista. En las listas enlazadas simples, cada nodo tiene un único puntero hacia el siguiente nodo. En las listas doblemente enlazadas, cada nodo tendría dos punteros: uno apuntando al siguiente nodo y otro al anterior. Este puntero es lo que permite que los nodos estén "enlazados" entre sí, formando una secuencia o cadena.
@@ -95,6 +103,7 @@ En este tipo, cada nodo tiene un puntero que apunta al siguiente nodo en la list
 
 ### Double-linked list
 En una lista enlazada doble, cada nodo contiene una referencia del previo y siguiente nodo del mismo. Recorrer una lista enlazada doble se puede hacer en direcciones hacia atrás y adelante, aunque requiere memoria adicional para la referencia de nodo anterior.
+
 - Un nodo en una lista enlazada doble contiene los siguientes elementos:
     * **Prev:** Puntero que apunta al nodo anterior en la lista
     * **Data:** Dato actual que almacena el nodo
@@ -108,6 +117,11 @@ En una lista enlazada doble, cada nodo contiene una referencia del previo y sigu
 ### Circular linked list
 En una lista circular simple, el último nodo está conectado de nuevo al primero, formando un círculo. Esto significa que no hay un "final" claro de la lista, y se puede seguir recorriendo la lista indefinidamente.
 
+- En una Circular Linked List (Lista Enlazada Circular), un nodo contiene dos elementos principales:
+    * **Data:** Dato actual que almacena el nodo
+    * **Next:** En lugar de tener una referencia al siguiente nodo en una única dirección (como en una lista enlazada simple), en una Circular Linked List, el nodo también contiene una referencia al siguiente nodo, pero de manera circular. Esto significa que el último nodo de la lista enlaza de nuevo con el primer nodo, cerrando así el círculo (no tiene puntero a 'null').
+
+
 
 
 ![Circular linked list](./images/CircularSinglyLinkedList-660x172.png)
@@ -119,6 +133,12 @@ Una lista circular doblemente enlazada se define como una lista circular enlazad
 
 
 ![Circular Doubly Linked List](./images/Circulardoublylinkedlist-660x155.png)
+
+
+- En una Circular Doubly Linked List (Lista Doblemente Enlazada Circular), cada nodo contiene tres elementos principales:
+    * **Data:** Dato actual que almacena el nodo
+    * **Next:** Puntero que apunta al nodo siguiente en la lista
+    * **Prev:** Puntero que apunta al nodo anterior en la lista
 
 
 ### Operaciones en Listas Enlazadas:
@@ -188,9 +208,12 @@ Una pila (stack en inglés) es una estructura de datos que sigue el principio de
 - **display():** Prints all the elements inside the stack. It traverses the stack, starting from the top, and prints each element. This operation is useful for debugging and understanding the current state of the stack. Depending on the implementation, it may print the elements in a specific order (e.g., from top to bottom).
 
 
-### Types of Stacks:
-- **Fixed Size Stack:** As the name suggests, a fixed size stack has a fixed size and cannot grow or shrink dynamically. If the stack is full and an attempt is made to add an element to it, an overflow error occurs. If the stack is empty and an attempt is made to remove an element from it, an underflow error occurs.
-- **Dynamic Size Stack:** A dynamic size stack can grow or shrink dynamically. When the stack is full, it automatically increases its size to accommodate the new element, and when the stack is empty, it decreases its size. This type of stack is implemented using a linked list, as it allows for easy resizing of the stack.
+![Referencia de las operaciones de una Pila](./images/working-of-stack.webp)
+
+
+### Tipos de Stacks:
+- **Fixed Size Stack:** Como su nombre indica, una pila de tamaño fijo tiene un tamaño fijo y no puede crecer ni reducirse dinámicamente. Si la pila está llena y se intenta agregarle un elemento, se produce un error de desbordamiento. Si la pila está vacía y se intenta eliminar un elemento de ella, se produce un error de desbordamiento inferior.
+- **Dynamic Size Stack:** Una pila de tamaño dinámico puede crecer o reducirse dinámicamente. Cuando la pila está llena, aumenta automáticamente su tamaño para acomodar el nuevo elemento, y cuando la pila está vacía, disminuye su tamaño. Este tipo de pila se implementa mediante una lista enlazada, ya que permite cambiar fácilmente el tamaño de la pila.
 
 
 
@@ -198,11 +221,6 @@ Una pila (stack en inglés) es una estructura de datos que sigue el principio de
 - Un array es una estructura de datos estática con un tamaño fijo, mientras que un stack puede crecer o decrecer dinámicamente.
 - Las operaciones de añadir (push) y eliminar (pop) en un stack se realizan solo en el tope, mientras que en un array, se pueden realizar en cualquier posición.
 - Un stack sigue el principio LIFO, mientras que un array no tiene una relación directa con el orden de inserción/eliminación.
-
-
-
-![Referencia de las operaciones de una Pila](./images/working-of-stack.webp)
-
 
 
 ### Time and Space Complexities from different operations of a Stack
@@ -226,13 +244,15 @@ ___
 Una cola (Queue) es una estructura de datos que sigue el principio FIFO (First-In-First-Out), lo que significa que el primer elemento que se añade es el primero en ser eliminado. En una cola, los elementos se añaden al final _(enqueue)_ y se eliminan desde el frente _(dequeue)_. Los Queues son útiles en situaciones donde los elementos deben procesarse en el orden en que llegan.
 
 
-### Queue components:
-- **Queue:** the name of the array storing queue elements.
-- **Front (Frente):** Es el extremo de la cola desde donde se eliminan los elementos.
-- **Rear (Trasera):** Es el extremo de la cola donde se añaden nuevos elementos.
+### Componentes de una Queue:
+- **Elementos (Items o Datos):** Estos son los elementos individuales que se almacenan en la cola. Cada elemento puede representar un dato o una tarea específica que se debe procesar.
+
+- **Frente (Front):** Es el extremo de la cola desde el cual se elimina el primer elemento. Cuando se realiza una operación de eliminación (dequeue), es el elemento en el frente de la cola el que se retira.
+
+- **Final (Rear o Back):** Es el extremo de la cola al cual se añaden nuevos elementos. Cuando se realiza una operación de inserción (enqueue), es en el final de la cola donde se agrega el nuevo elemento.
 
 
-### Characteristics of Queue:
+### Caracteristicas de una Queue:
 - Queue can handle multiple data.
 - We can access both ends.
 - They are fast and flexible. 
@@ -254,10 +274,10 @@ Una cola (Queue) es una estructura de datos que sigue el principio FIFO (First-I
 
 
 ### Queue Types:
-- ### Input Restricted Queue
+- #### Input Restricted Queue
 This is a simple queue. In this type of queue, the input can be taken from only one end but deletion can be done from any of the ends.
 
-#### Input Restricted Queue Operations:
+- **Input Restricted Queue Operations**:
 - _Mainly the following three basic operations are performed on input restricted queue:_
     - **insertRear():** Adds an item at the rear of the queue. 
     - **deleteFront():** Deletes an item from the front of the queue. 
@@ -275,7 +295,7 @@ This is a simple queue. In this type of queue, the input can be taken from only 
 - ### Output Restricted Queue
 This is also a simple queue. In this type of queue, the input can be taken from both ends but deletion can be done from only one end.
 
-#### Output Restricted Queue Operations:
+- **Output Restricted Queue Operations**:
 - _Mainly the following three basic operations are performed on output restricted queue:_
     - **insertRear():** Adds an item at the rear of the queue. 
     - **insertFront():** Adds an item at the front of the queue. 
@@ -293,7 +313,7 @@ This is also a simple queue. In this type of queue, the input can be taken from 
 - ### Circular Queue
 This is a special type of queue where the last position is connected back to the first position. Here also the operations are performed in FIFO order.
 
-#### Circular Queue Operations:
+- **Circular Queue Operations**:
 - **Front:** Get the front item from the queue.
 - **Rear:** Get the last item from the queue.
 - **enQueue(value):** This function is used to insert an element into the circular queue. In a circular queue, the new element is always inserted at the rear position. 
@@ -315,6 +335,8 @@ This is a special type of queue where the last position is connected back to the
 - ### Double-Ended Queue (Dequeue)
 In a double-ended queue the insertion and deletion operations, both can be performed from both ends. Podría verse como un mecanismo que permite aunar en una única estructura las funcionalidades de las pilas (estructuras LIFO) y las colas (estructuras FIFO), en otras palabras, estas estructuras (pilas y colas) podrían implementarse fácilmente con una deque.
 
+![Double-ended Queue o Deque](./images/double-ended-queue.jpg)
+
 
 | Operation       | Description                                     | Time Complexity |
 | --------------  | ------------------------------------------------| --------------- |
@@ -329,21 +351,19 @@ In a double-ended queue the insertion and deletion operations, both can be perfo
 
 
 
-![Double-ended Queue o Deque](./images/double-ended-queue.jpg)
-
-
 
 - ### Priority Queue
 A priority queue is a special queue where the elements are accessed based on the priority assigned to them.
 
-#### Properties of Priority Queue
-So, a priority Queue is an extension of the queue with the following properties. 
+- **Properties of Priority Queue**
+So, a priority Queue is an extension of the queue with the following properties:
 - Every item has a priority associated with it.
 - An element with high priority is dequeued before an element with low priority.
 - If two elements have the same priority, they are served according to their order in the queue.
 
+<br />
 
-#### How is Priority assigned to the elements in a Priority Queue?
+- **How is Priority assigned to the elements in a Priority Queue?**
 In a priority queue, generally, the value of an element is considered for assigning the priority.
 For example, _the element with the highest value is assigned the highest priority_ and _the element with the lowest value is assigned the lowest priority_. The reverse case can also be used i.e., the element with the lowest value can be assigned the highest priority. Also, the priority can be assigned according to our needs. 
 
@@ -351,27 +371,28 @@ For example, _the element with the highest value is assigned the highest priorit
 ![Priority Queue](./images/priority-queue.webp)
 
 
-#### Operations of a Priority Queue:
+- **Operations of a Priority Queue:**
 _A typical priority queue supports the following operations:_
 
-#### 1. **Insertion in a Priority Queue**
+- 1. **Insertion in a Priority Queue**
 When a new element is inserted in a priority queue, it moves to the empty slot from top to bottom and left to right. However, if the element is not in the correct place then it will be compared with the parent node. If the element is not in the correct order, the elements are swapped. The swapping process continues until all the elements are placed in the correct position.
-
-#### 2. **Deletion in a Priority Queue**
+<br />
+- 2. **Deletion in a Priority Queue**
 In a Priority Queue, deletion typically refers to removing an element from the queue based on its priority. The process of deletion in a Priority Queue is usually associated with extracting the element with the highest (or lowest) priority.
 
-- There are two common operations related to deletion in a Priority Queue:
-    - **Extract-Max (or Extract-Min):** This operation involves removing and returning the element with the highest priority (for Max Priority Queue) or the lowest priority (for Min Priority Queue).
+        - There are two common operations related to deletion in a Priority Queue:
+        - **Extract-Max (or Extract-Min):** This operation involves removing and returning the element with the highest priority (for Max Priority Queue) or the lowest priority (for Min Priority Queue).
 
-    - **Delete:** Deleting a specific element from the Priority Queue. This operation might require searching for the element based on its value, and once found, removing it while maintaining the priority order of the remaining elements.
+        - **Delete:** Deleting a specific element from the Priority Queue. This operation might require searching for the element based on its value, and once found, removing it while maintaining the priority order of the remaining elements.
 
 
 
-#### 3. **Peek in a Priority Queue**
+- 3. **Peek in a Priority Queue**
 This operation helps to return the maximum element from Max Heap or the minimum element from Min Heap without deleting the node from the priority queue.
 
+<br />
 
-### Types of Priority Queues
+- ### Types of Priority Queues
 1. **Ascending order Priority Queues:**
 As the name suggests, in ascending order priority queue, _the element with a lower priority value is given a higher priority in the priority list_. For example, if we have the following elements in a priority queue arranged in ascending order like 4,6,8,9,10. Here, 4 is the smallest number, therefore, it will get the highest priority in a priority queue and so when we dequeue from this type of priority queue, 4 will remove from the queue and dequeue returns 4.
 
@@ -386,7 +407,7 @@ There is no priority attached to elements in a queue, the rule of first-in-first
 
 
 
-#### Use cases
+#### Queue use cases
 One place where Queues are often used is in breadth-first search (BFS) or in implementing a cache.
 
 
@@ -394,11 +415,11 @@ One place where Queues are often used is in breadth-first search (BFS) or in imp
 ___
 ## Tree (https://www.geeksforgeeks.org/introduction-to-tree-data-structure-and-algorithm-tutorials/)
 
-- Un árbol (Tree) es una estructura de datos jerárquica que consiste en nodos conectados por aristas. Cada nodo tiene un padre (excepto el nodo superior llamado raíz) y cero o más hijos. Cada nodo se denomina "nodo" y las aristas representan las relaciones jerárquicas entre los nodos.
+- Un árbol (Tree) es una estructura de datos jerárquica que consiste en nodos conectados por aristas. Cada nodo tiene un padre (excepto el nodo superior llamado raíz) y cero o más hijos. Cada nodo se denomina "node" y las aristas representan las relaciones jerárquicas entre los nodos.
 
 ### Componentes básicos de un Árbol:
 - **Raíz (Root):** El nodo superior del árbol, desde el cual se originan todos los demás nodos.
-- **Nodo:** Cada elemento individual en el árbol.
+- **Nodo (Node):** Cada elemento individual en el árbol.
 - **Hoja (Leaf):** Nodos sin hijos en el extremo del árbol.
 - **Padre e Hijo:** Relación que describe la conexión entre dos nodos, donde uno es el padre y el otro es el hijo.
 - **Key (Clave):** La clave es la información que se almacena en el nodo y se utiliza para ordenar y buscar en el árbol.
@@ -412,8 +433,16 @@ ___
 <br />
 
 ### Tipos de árboles
+
+<br />
+
 1. **Árbol binario (Binary Tree):** Cada nodo tiene al menos dos hijos.
 ![Binary Tree](./images/binary-tree.png)
+
+- #### Tipos de arboles binarios:
+
+<br />
+
 2. **Árbol de Búsqueda Binaria (Binary Search Tree):** Cada nodo tiene al menos dos hijos.
     - Las propiedades que separan un _árbol de búsqueda_ de un _árbol binario normal_ son:
         - Todos los nodos del subárbol izquierdo son menores que el nodo raíz

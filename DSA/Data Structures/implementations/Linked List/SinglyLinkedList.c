@@ -1,207 +1,144 @@
-// SINGLY LINKED LIST IMPLEMENTATION IN C
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 
-// struct of a Node
-// data: The data that the Node will storage
-// next: A pointer to the next Node
-
-typedef struct Node {
-    int data;
-    struct Node *next;
+typedef struct _SNode {
+  int data;
+  struct _SNode* next;
 } Node;
 
-// Operations
-
-// CREATE A NODE
-// Given a data, the function returns a new node with the data and a pointer to the next (NULL)
-// The new node will always be added at the end of the Linked List (new node is the tail)
-Node *createNode(int data){
-    Node *newNode = (Node*)malloc(sizeof(Node));
-    if(newNode == NULL){
-        printf("Error to assign memory for the new node\n");
-        exit(EXIT_FAILURE);
-    }
-    newNode->data = data;
-    newNode->next = NULL;
+Node* create_node(int data){
+  Node* newNode = (Node*)malloc(sizeof(Node));
+  assert(newNode != NULL);
+  newNode->data = data;
+  newNode->next = NULL;
+  return newNode;
 }
 
-// COUNT ELEMENTS WITHIN THE LINKED LIST
-int getListLength(Node *head){
-    Node *current = head;
-    int len = 0;
-    while(current != NULL){
-        len++;
-        current = current->next;
-    }
-    return len;
+void insert_begin(Node** head, int data){
+  Node* newNode = create_node(data);
+  newNode->next = *head;
+  *head = newNode;
 }
 
-// INSERT AT THE BEGIN
-// Inserts a new node at the beginning of the linked list, making the newly inserted node the new head of the linked list.
-void insertAtBegin(Node **head, int data){
-    Node *newNode = createNode(data);
-    newNode->next = *head;
+void insert_end(Node** head, int data){
+  Node* newNode = create_node(data);
+  if(*head == NULL){
     *head = newNode;
-}
-
-// INSERT AT THE END
-// Inserts a new node at the end of the linked list, making the newly inserted node the new tail of the linked list
-void insertAtEnd(Node **head, int data){
-    Node *newNode = createNode(data);
-    if(*head == NULL){
-        *head = newNode;
-    } else {
-        Node *current = *head;
-        while(current->next != NULL){
-            current = current->next;
-        }
-        current->next = newNode;
+  } else {
+    Node* current = *head;
+    while(current->next != NULL){
+      current = current->next;
     }
-}
-
-// INSERT IN A POSITION
-// Inserts a new node at a specified position within the linked list.
-void insertAtPosition(Node **head, int data, int pos){
-    if(pos <= 0){
-        printf("Invalid position number.\n");
-        return;
-    }
-
-    Node *newNode = createNode(data);
-
-    if(pos == 1){
-        newNode->next = *head;
-        *head = newNode;
-        return;
-    }
-
-    Node *current = *head;
-    int i = 1;
-
-    while(i < pos - 1 && current != NULL){
-        current = current->next;
-        i++;
-    }
-
-    newNode->next = current->next;
     current->next = newNode;
+  }
 }
 
-// DELETE THE BEGIN
-// Removes the first node from the linked list, making the next node the new head of the list.
-void deleteAtBegin(Node **head){
-    if(*head == NULL){
-        printf("La lista está vacía.\n");
-        return;
-    }
-    Node *temp = *head;
-    *head = (*head)->next;
+void insert_position(Node** head, int pos, int data){
+  assert(pos >= 0);
+  if(pos == 0){
+    insert_begin(head, data);
+    return;
+  }
+  Node* newNode = create_node(data);
+  Node* current = *head;
+  for(int i = 0; i<pos-1 && current != NULL; i++){
+    current = current->next;
+  }
+  assert(current != NULL);
+  newNode->next = current->next;
+  current->next = newNode;
+}
+
+void delete_begin(Node** head){
+  assert(*head != NULL);
+  Node* temp = *head;
+  *head = (*head)->next;
+  free(temp);
+}
+
+void delete_end(Node** head){
+  assert(*head != NULL);
+  if((*head)->next == NULL){
+    delete_begin(head);
+    return;
+  }
+  Node* current = *head;
+  while(current->next->next != NULL){
+    current = current->next;
+  }
+  free(current->next);
+  current->next = NULL;
+}
+
+void delete_position(Node** head, int pos){
+  assert(*head != NULL && pos >= 0);
+  if(pos == 0){
+    delete_begin(head);
+    return;
+  }
+  Node* current = *head;
+  Node* temp;
+  for(int i = 0; i<pos-1 && current != NULL; i++){
+    current = current->next;
+  }
+  temp = current->next;
+  current->next = current->next->next;
+  free(temp);
+}
+
+int list_length(Node* head){
+  Node* current = head;
+  int len = 0;
+  while(current != NULL){
+    current = current->next;
+    len++;
+  }
+  return len;
+}
+
+void display_list(Node* head){
+  Node* current = head;
+  while(current != NULL){
+    printf("%d -> ", current->data);
+    current = current->next;
+  }
+  printf("NULL\n");
+}
+
+void free_list(Node* head){
+  Node* current = head;
+  while(current != NULL){
+    Node* temp = current;
+    current = current->next;
     free(temp);
-}
-
-// DELETE THE END
-// Removes the last node from the linked list, making the previous node the new tail of the list.
-void deleteAtEnd(Node **head){
-    if(*head == NULL){
-        printf("The list is empty.\n");
-        return;
-    }
-
-    if((*head)->next == NULL){
-        free(*head);
-        *head = NULL;
-        return;
-    }
-
-    Node *current = *head;
-
-    while(current->next->next != NULL){
-        current = current->next;
-    }
-
-    free(current->next);
-    current->next = NULL;
-}
-
-// DELETE A POSITION
-// Removes a node from a specified position within the linked list. 
-void deleteAtPosition(Node **head, int pos){
-    if(pos <= 0){
-        printf("Invalid position number.\n");
-        return;
-    }
-
-    if(pos == 1){
-        Node *temp = *head;
-        *head = (*head)->next;
-        free(temp);
-        return;
-    }
-
-    Node *current = *head;
-    int i = 1;
-
-    while(i < pos - 1 && current != NULL){
-        current = current->next;
-        i++;
-    }
-
-    if(current == NULL || current->next == NULL){
-        printf("Position index out of range.\n");
-        return;
-    }
-
-    Node *temp = current->next;
-    current->next = current->next->next;
-    free(temp);
-}
-
-// SEARCH
-// Returns 1 if node (target) exists, otherwise returns 0
-int search(Node *head, int target){
-    Node *current = head;
-    while(current != NULL){
-        if(current->data == target){
-            return 1;
-        }
-        current = current->next;
-    }
-    return 0;
-}
-
-// DISPLAY
-// Displays the contents of the linked list by traversing the nodes from the head to the tail, using "->" to indicate the connections between nodes in the list.
-void display(Node *head){
-    Node *current = head;
-    while(current != NULL){
-        printf("%d -> ", current->data);
-        current = current->next;
-    }
-    printf("NULL\n");
+  }
 }
 
 int main(){
-    Node *head = NULL; // Initializing the linked list
+  Node* head = NULL;
 
-    insertAtEnd(&head, 10);
-    insertAtEnd(&head, 20);
-    insertAtBegin(&head, 30);
-    display(head); // 30 -> 10 -> 20 -> NUL
-    printf("Linked List length: %d\n", getListLength(head)); // Linked List length: 3
-    deleteAtBegin(&head);
-    display(head); // 10 -> 20 -> NULL
-    deleteAtPosition(&head, 2);
-    display(head); // 10 -> NULL
-    insertAtPosition(&head, 20, 2);
-    display(head); // 10 -> 20 -> NULL
-    deleteAtEnd(&head);
-    display(head); // 10 -> NULL
-    deleteAtBegin(&head);
-    display(head); // NULL
-    deleteAtBegin(&head); // La lista está vacía.
+  for(int i = 10; i<=50; i+=10){
+    insert_end(&head, i);
+  }
 
+  display_list(head); // 10 -> 20 -> 30 -> 40 -> 50 -> NULL
+  delete_begin(&head);
+  display_list(head); // 20 -> 30 -> 40 -> 50 -> NULL
+  delete_end(&head);
+  display_list(head); // 20 -> 30 -> 40 -> NULL
+  delete_position(&head, 1);
+  display_list(head); // 20 -> 40 -> NULL
+  insert_begin(&head, 10);
+  display_list(head); // 10 -> 20 -> 40 -> NULL
+  insert_end(&head, 50);
+  display_list(head); // 10 -> 20 -> 40 -> 50 -> NULL
+  insert_position(&head, 2, 30);
+  display_list(head); // 10 -> 20 -> 30 -> 40 -> 50 -> NULL
 
-    free(head);
+  printf("List length: %d\n", list_length(head));
+
+  free_list(head);
+
+  return 0;
 }
