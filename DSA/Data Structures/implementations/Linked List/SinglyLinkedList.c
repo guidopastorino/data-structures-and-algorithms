@@ -115,6 +115,14 @@ void free_list(Node* head){
   }
 }
 
+void empty_list(Node** head){
+  while(*head != NULL){
+    Node* temp = *head;
+    *head = (*head)->next;
+    free(temp);
+  }
+}
+
 int main(){
   Node* head = NULL;
 
@@ -136,7 +144,11 @@ int main(){
   insert_position(&head, 2, 30);
   display_list(head); // 10 -> 20 -> 30 -> 40 -> 50 -> NULL
 
-  printf("List length: %d\n", list_length(head));
+  printf("List length: %d\n", list_length(head)); // List length: 5
+
+  empty_list(&head);
+
+  display_list(head); // NULL
 
   free_list(head);
 
